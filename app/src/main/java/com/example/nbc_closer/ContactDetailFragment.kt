@@ -10,6 +10,9 @@ import com.example.nbc_closer.databinding.FragmentContactDetailBinding
 class ContactDetailFragment: Fragment() {
     private val binding by lazy { FragmentContactDetailBinding.inflate(layoutInflater) }
 
+    //0. MainActivity.kt에서 현재 눌려진 값이 UserData의 몇 번재 항인지 받아오기.
+    val clickedUserData = UserData(R.drawable.user_img_yujin, "안유진", "bluecar@naver.com","010-9874-3216",false)
+    //[to-do] clickedUserData에 눌려진 버튼의 UserData 값을 보내주시면 됩니다!
 
     //프래그먼트에 대해 레이아웃을 제공하려면 반드시 onCreateView()콜백 메서드를 구현
     override fun onCreateView(
@@ -17,7 +20,12 @@ class ContactDetailFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        binding.detailImg.setImageResource(clickedUserData.img)
+        binding.detailName.text = clickedUserData.name
+        binding.detailEmail.text = clickedUserData.email
+        binding.detailNumber.text = clickedUserData.number
         return binding.root
     }
+
 
 }
