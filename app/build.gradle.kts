@@ -7,6 +7,11 @@ android {
     namespace = "com.example.nbc_closer"
     compileSdk = 34
 
+    buildFeatures{
+        viewBinding = true
+        dataBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.nbc_closer"
         minSdk = 24
