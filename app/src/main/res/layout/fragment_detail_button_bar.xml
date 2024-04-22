@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/detail_btn_bar_bg"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@color/black"/>
+    <!-- [to-do] 추후 drawable로 흰색 그라데이션 배경 그려 교체하기 -->
+
+    <!-- [to-do] 추후 버튼 예쁘게 꾸미기 -->
+    <Button
+        android:id="@+id/detail_btn_bar_message_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="문자하기"
+        app:layout_constraintTop_toTopOf="@id/detail_btn_bar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/detail_btn_bar_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/detail_btn_bar_call_btn"/>
+    <Button
+        android:id="@+id/detail_btn_bar_call_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="전화하기"
+        app:layout_constraintTop_toTopOf="@id/detail_btn_bar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/detail_btn_bar_bg"
+        app:layout_constraintStart_toStartOf="@id/detail_btn_bar_message_btn"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
