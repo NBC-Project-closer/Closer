@@ -14,16 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <!--하단 버튼-->
-<!--    <fragment-->
-<!--        android:id="@+id/detail_btm_bar_frag"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="120dp"-->
-<!--        android:name="com.example.nbc_closer.DetailButtonBarFragment"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        android:elevation="10dp"/>-->
-
     <ScrollView
         android:id="@+id/detail_scroll_view"
         android:layout_width="match_parent"
@@ -142,7 +132,14 @@
                 android:text="스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다."
                 android:textSize="20dp" />
         </LinearLayout>
-
     </ScrollView>
 
+    <!-- [question] elevation과 상관없이(?) xml에서 아래로 갈수록 상단으로 가는 건가? 희한하네. -->
+    <fragment
+        android:id="@+id/detail_btm_bar_frag"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:name="com.example.nbc_closer.DetailButtonBarFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
