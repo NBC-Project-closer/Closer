@@ -1,5 +1,5 @@
 package com.example.nbc_closer
-
+// merge develop into contactdetail: contactdetail에 UserData.kt 들어감.
 data class UserData(
     val img : Int,
     val name : String,
