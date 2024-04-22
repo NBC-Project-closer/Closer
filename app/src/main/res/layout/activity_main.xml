@@ -27,4 +27,6 @@
         app:tabIndicatorColor="@color/font_color"
         app:tabMode="fixed"
         />
+
+    <!--디테일 프래그먼트로 가는 부분 작성 필요(현재는 실행 시 확인 불가)-->
 </androidx.constraintlayout.widget.ConstraintLayout>

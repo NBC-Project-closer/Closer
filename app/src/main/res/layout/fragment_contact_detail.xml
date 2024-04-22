@@ -1,6 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F3F7FF">
+<!--상단바 및 하단 버튼뷰는 또 다른 fragment가 되어야 하지 않을까? -->
+    <fragment
+        android:id="@+id/detail_top_bar_frag"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:name="com.example.nbc_closer.TopBarFragment"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <!-- 그림자(임시) -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:src="@drawable/top_bar_shadow"
+        app:layout_constraintTop_toBottomOf="@id/detail_top_bar_frag"
+        app:layout_constraintStart_toStartOf="parent"/>
+    <ScrollView
+        android:id="@+id/detail_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/detail_top_bar_frag"
+        app:layout_constraintStart_toStartOf="parent">
 
+        <!--스크롤뷰 내에는 하나의 위젯만 들어가므로, 레이아웃을 하나 선언 후 그 안에 위젯 집어넣기-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp">
+            <androidx.cardview.widget.CardView
+                android:layout_margin="20dp"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                app:cardCornerRadius="125dp"
+                android:layout_gravity="center_horizontal">
+                <!--[to-do] cardView 없이 입력 시 이미지가 엄청 세로로 길어지는데 이유 아시는 분? -->
+                <ImageView
+                    android:id="@+id/detail_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/dummy_img_karina"/>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/detail_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="유지민"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+            <!--전화번호-->
+            <TextView
+                android:id="@+id/detail_number_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="전화번호"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:id="@+id/detail_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="010-1234-5678"
+                android:textSize="20dp" />
+
+            <!--이메일-->
+            <TextView
+                android:id="@+id/detail_email_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="이메일"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/detail_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="katarinabluu@kwangya.net"
+                android:textSize="20dp" />
+
+            <!--이벤트, 현재 data class에는 없음.-->
+            <TextView
+                android:id="@+id/detail_event_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="이벤트"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/detail_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15분 이후 알림"
+                android:textSize="20dp" />
+
+            <!--테스트1. 추후 삭제 요망-->
+            <TextView
+                android:id="@+id/detail_test1_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="테스트1"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/detail_test1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다."
+                android:textSize="20dp" />
+
+            <!--테스트2. 추후 삭제 요망-->
+            <TextView
+                android:id="@+id/detail_test2_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="테스트2"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/detail_test2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다."
+                android:textSize="20dp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- [question] elevation과 상관없이(?) xml에서 아래로 갈수록 상단으로 가는 건가? 희한하네. -->
+    <fragment
+        android:id="@+id/detail_btm_bar_frag"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:name="com.example.nbc_closer.DetailButtonBarFragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
