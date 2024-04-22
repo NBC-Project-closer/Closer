@@ -14,5 +14,10 @@
 .cxx
 local.properties
 .idea/deploymentTargetDropDown.xml
-.idea/gradle.xml
+.idea/deploymentTargetDropDown.xml
 .idea/misc.xml
+.idea/.name
+.idea/compiler.xml
+.idea/kotlinc.xml
+.idea/migrations.xml
+.idea/vcs.xml
