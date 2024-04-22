@@ -1,4 +1,6 @@
 package com.example.nbc_closer
 
-class ContactDetailFragment {
+import androidx.fragment.app.Fragment
+
+class ContactDetailFragment : Fragment() {
 }
