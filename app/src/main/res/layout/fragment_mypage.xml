@@ -1,6 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F3F7FF"
+    tools:context=".MypageFragment">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+
+                <ImageView
+                    android:id="@+id/my_page_iv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:background="@drawable/cat"/>
+
+                <TextView
+                    android:id="@+id/my_page_tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center|bottom"
+                    android:gravity="center"
+                    android:text="클로저"
+                    android:textColor="#242251"
+                    android:background="@drawable/rectangle_2"
+                    android:textSize="45dp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_page_btn_message"
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/rectangle_1"
+                    android:text="문자"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_btn_call"
+                    app:layout_constraintEnd_toStartOf="@id/my_page_btn_call"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/my_page_btn_call" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/my_page_btn_call"
+                    android:layout_width="180dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/rectangle_1"
+                    android:text="전화"
+                    android:textColor="@color/white"
+                    android:textSize="30dp"
+                    app:layout_constraintBottom_toBottomOf="@id/my_page_btn_message"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/my_page_btn_message"
+                    app:layout_constraintTop_toTopOf="@id/my_page_btn_message" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="전화번호"
+                android:textColor="#242251"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="000-0000-0000"
+                android:textColor="#242251"
+                android:textSize="25dp"
+                android:layout_marginLeft="20dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#BBBBDC"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일 주소"
+                android:textColor="#242251"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="user@closer.com"
+                android:textColor="#242251"
+                android:textSize="25dp"
+                android:layout_marginLeft="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#BBBBDC"
+                android:layout_marginTop="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이벤트"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                android:textColor="#242251"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15분 이후 알림"
+                android:textSize="25dp"
+                android:textColor="#242251"
+                android:layout_marginLeft="20dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#BBBBDC"
+                android:layout_marginTop="20dp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="210dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle_1"
+                android:text="로그아웃"
+                android:textColor="@color/white"
+                android:textSize="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>
