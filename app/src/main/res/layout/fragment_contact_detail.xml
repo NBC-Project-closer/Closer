@@ -14,13 +14,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
-    <fragment
-        android:id="@+id/detail_btm_bar_frag"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:name="com.example.nbc_closer.DetailButtonBarFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <!--하단 버튼-->
+<!--    <fragment-->
+<!--        android:id="@+id/detail_btm_bar_frag"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="120dp"-->
+<!--        android:name="com.example.nbc_closer.DetailButtonBarFragment"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        android:elevation="10dp"/>-->
 
     <ScrollView
         android:id="@+id/detail_scroll_view"
