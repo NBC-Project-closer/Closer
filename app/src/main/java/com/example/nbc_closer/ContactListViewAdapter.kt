@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 class ContactListViewAdapter(activity : FragmentActivity) : FragmentStateAdapter(activity) {
     private val fragmentList = listOf<Fragment>(
         ContactFragment(),
-        ContactDetailFragment()
+        MyPageFragment()
     )
     override fun getItemCount(): Int {
       return  fragmentList.size
