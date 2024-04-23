@@ -16,15 +16,6 @@ class SaveInfoDialogFragment :DialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding.dialogCancellation.setOnClickListener {
-            dismiss()
-        }
-
-        binding.dialogSave.setOnClickListener {
-            dismiss()
-        }
-
     }
 
 
@@ -38,10 +29,9 @@ class SaveInfoDialogFragment :DialogFragment() {
     }
 
 
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 }
