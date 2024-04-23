@@ -32,6 +32,15 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    /* [수영 요청사항] 클릭받은 item의 UserData값을 DetailActivity로 보내주시면 됩니다.
+
+    궁금한 점: datalist에 접근하려면 현재 어떻게 해야 하나요?
+    질문하는 이유: DetailActivity에서도 datalist에 접근 가능해지면 datalist의 index를 가지고 불러올 수 있음
+    질문하는 이유 2: 좋아요/즐겨찾기 입력이 UserData에 저장되는 게 아니라 MainActivity에 저장되는 것이라면
+    index가 아닌 선택된 UserData값을 그대로 보내주셔야 할 것 같아서요.
+    */
+
     // 초기 뷰 설정
     private fun initView(){
         binding = ActivityMainBinding.inflate(layoutInflater)

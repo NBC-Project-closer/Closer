@@ -17,4 +17,9 @@ class DetailButtonBarFragment: Fragment() {
     ): View? {
         return binding.root
     }
+
+    //http://developer.android.com/intl/ko/reference/android/content/Intent.html 문자, 또는 통화를 할 때 필요한 암시적 인텐트
+//        val messageIntent = Intent( Intent.ACTION_SENDTO, Uri.parse("tel:"+binding.detailNumber.text) )
+//        val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("sms:"+binding.detailNumber.text) )
+
 }
