@@ -48,21 +48,20 @@
                     android:layout_gravity="center_horizontal">
 
                     <ImageView
-                        android:id="@+id/mypage_iv_picture"
+                        android:id="@+id/mypage_picture"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/dummy_img_karina"/>
                 </androidx.cardview.widget.CardView>
 
                 <TextView
-                    android:id="@+id/mypage_tv_name"
+                    android:id="@+id/mypage_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|bottom"
                     android:gravity="center"
                     android:text="유지민"
                     android:textColor="#242251"
-                    android:background="@drawable/rectangle_2"
                     android:textSize="30dp"
                     android:textStyle="bold" />
 
@@ -78,9 +77,10 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
+                android:id="@+id/mypage_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="010-1234-5678"
+                android:text="000-0000-0000"
                 android:textColor="#242251"
                 android:textSize="20dp" />
 
@@ -100,18 +100,21 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
+                android:id="@+id/mypage_email"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="katarinabluu@kwangya.net"
+                android:text="user@closer.com"
                 android:textColor="#242251"
                 android:textSize="20dp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="3dp"
+                android:layout_marginTop="20dp"
                 android:background="#BBBBDC" />
 
             <TextView
+                android:id="@+id/mypage_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="이벤트"
@@ -146,9 +149,9 @@
                 android:id="@+id/mypage_tv_more2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="있으면 넣기"
+                android:text="있으면 넣을 것"
                 android:textSize="20dp"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="100dp"/>
 
         </LinearLayout>
 
