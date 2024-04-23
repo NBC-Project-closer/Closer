@@ -1,30 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#F3F7FF">
-<!--상단바 및 하단 버튼뷰는 또 다른 fragment가 되어야 하지 않을까? -->
-    <fragment
-        android:id="@+id/detail_top_bar_frag"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:name="com.example.nbc_closer.TopBarFragment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
-    <!-- 그림자(임시) -->
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:src="@drawable/top_bar_shadow"
-        app:layout_constraintTop_toBottomOf="@id/detail_top_bar_frag"
-        app:layout_constraintStart_toStartOf="parent"/>
+    tools:context=".DetailActivity">
+
+    <!-- 공통 상단바 위젯이 적용될 예정. -->
     <ScrollView
         android:id="@+id/detail_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/detail_top_bar_frag"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <!--스크롤뷰 내에는 하나의 위젯만 들어가므로, 레이아웃을 하나 선언 후 그 안에 위젯 집어넣기-->
@@ -138,9 +126,7 @@
                 android:text="스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다. 스크롤이 잘 되는지 확인하기 위한 항목입니다."
                 android:textSize="20dp" />
         </LinearLayout>
-    </ScrollView>
-
-    <!-- [question] elevation과 상관없이(?) xml에서 아래로 갈수록 상단으로 가는 건가? 희한하네. -->
+    </ScrollView><!-- [question] elevation과 상관없이(?) xml에서 아래로 갈수록 상단으로 가는 건가? 희한하네. -->
     <fragment
         android:id="@+id/detail_btm_bar_frag"
         android:layout_width="match_parent"
