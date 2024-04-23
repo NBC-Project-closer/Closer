@@ -42,10 +42,10 @@ class ContactFragment : Fragment() {
             when(item.itemId){
                 R.id.show_grid -> {
                     Log.d("D", "그리드 형식 클릭")
-                    // 기능 채워 넣기
+                   initGrid()
                    }
                 else -> {Log.d("D", "리스트 형식 클릭")
-                    //기능 채워 넣기
+                    initFragment()
                         }
         }
         return super.onOptionsItemSelected(item)
@@ -60,6 +60,20 @@ class ContactFragment : Fragment() {
             }
         })
         binding.contactRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.contactBtnAdd.setOnClickListener {
+            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
+            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        }
+    }
+    private fun initGrid(){
+        binding.contactRecyclerView.adapter = ContactGridAdapter(datalist,object :OnItemClick{
+            override fun onDataClick(data: UserData) {
+                val intent = Intent(activity, DetailActivity::class.java)
+                intent.putExtra("detail", data)
+                startActivity(intent)
+            }
+        })
+        binding.contactRecyclerView.layoutManager = GridLayoutManager(this.context,2)
         binding.contactBtnAdd.setOnClickListener {
             binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
             binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
