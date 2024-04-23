@@ -6,13 +6,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detail_tool_bar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#242251"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+        <ImageView
+            android:id="@+id/appbat_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/logo_closer"
+            android:layout_gravity="center"
+            />
+    </androidx.appcompat.widget.Toolbar>
     <!-- 공통 상단바 위젯이 적용될 예정. -->
     <ScrollView
         android:id="@+id/detail_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detail_tool_bar"
         app:layout_constraintStart_toStartOf="parent">
 
         <!--스크롤뷰 내에는 하나의 위젯만 들어가므로, 레이아웃을 하나 선언 후 그 안에 위젯 집어넣기-->

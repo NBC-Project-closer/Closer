@@ -1,5 +1,6 @@
 package com.example.nbc_closer
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -25,21 +26,7 @@ class ContactFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.contactRecyclerView.adapter = ContactRecyclerAdapter(datalist, object : OnItemClick{
-            override fun onDataClick(data: UserData) {
-                val bundle = Bundle()
-                bundle.putParcelable("detail", data)
-//                parentFragmentManager.beginTransaction()
-//                    .replace(R.id.main_activity, BlankFragment())
-//                    .commit()
-            }
-        })
-        binding.contactRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.contactBtnAdd.setOnClickListener {
-            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
-            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
-        }
-
+        initFragment()
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -62,6 +49,21 @@ class ContactFragment : Fragment() {
                         }
         }
         return super.onOptionsItemSelected(item)
+    }
+    //초기 설정을 함수로 내렸습니다, onViewCreated를 깔끔하게 하기 위해
+    private fun initFragment() {
+        binding.contactRecyclerView.adapter = ContactRecyclerAdapter(datalist, object : OnItemClick{
+            override fun onDataClick(data: UserData) {
+                val intent = Intent(activity, DetailActivity::class.java)
+                intent.putExtra("detail", data)
+                startActivity(intent)
+            }
+        })
+        binding.contactRecyclerView.layoutManager = LinearLayoutManager(this.context)
+        binding.contactBtnAdd.setOnClickListener {
+            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
+            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        }
     }
 
 }
