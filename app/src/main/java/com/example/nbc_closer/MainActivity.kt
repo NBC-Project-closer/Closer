@@ -1,15 +1,11 @@
 package com.example.nbc_closer
 
+
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.nbc_closer.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -21,6 +17,9 @@ class MainActivity : AppCompatActivity() {
 //        enableEdgeToEdge()
         initView()
         setContentView(binding.root)
+
+        SaveInfoDialogFragment().show(
+            supportFragmentManager, "SaveInfoDialogFragment")
 
         //앱 바 액티비티에 묶기
         setSupportActionBar(binding.mainToolBar)
@@ -62,3 +61,4 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
