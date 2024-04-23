@@ -7,21 +7,6 @@
     android:layout_height="match_parent"
     android:background="#F3F7FF">
 
-    <fragment
-        android:id="@+id/mypage_top_bar_frag"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:name="com.example.nbc_closer.TopBarFragment"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:src="@drawable/top_bar_shadow"
-        app:layout_constraintTop_toBottomOf="@id/mypage_top_bar_frag"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <ScrollView
         android:id="@+id/mypage_scroll_view"
         android:layout_width="match_parent"
@@ -152,7 +137,7 @@
                 android:layout_height="wrap_content"
                 android:text="있으면 넣을 것"
                 android:textSize="20dp"
-                android:layout_marginBottom="100dp"/>
+                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 
