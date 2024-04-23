@@ -1,14 +1,18 @@
 package com.example.nbc_closer
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+
+@Parcelize // 추후 데이터 전달을 위해 Parcelize 설정
 data class UserData(
     val img : Int,
     val name : String,
     val email : String,
     val number : String,
-    val like : Boolean
-)
-fun datalist(){
-    val datalist = listOf<UserData>(
+    var like : Boolean
+) : Parcelable
+    val datalist = mutableListOf<UserData>(
         UserData(R.drawable.user_img_iu, "아이유", "dkdldb_IU@naver.com", "010-1234-1234", false),
         UserData(R.drawable.user_img_wonyung, "장원영", "wonyoung@gmail.com", "010-5678-5678", false),
         UserData(R.drawable.user_img_suji, "수지","likeapple@gmail.com", "010-5468-3543",false),
@@ -20,4 +24,3 @@ fun datalist(){
         UserData(R.drawable.user_img_dohyun, "이도현", "hateghost@gmail.com","010-4486-3432",false),
         UserData(R.drawable.user_img_jin, "진", "dynamite@naver.com", "010-9654-4352",false)
     )
-}
