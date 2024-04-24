@@ -71,7 +71,12 @@ class ContactRecyclerAdapter(val data: MutableList<UserData>, val onItemClick: O
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position % 2 == 0) {
             holder as LeftViewHolder
-            holder.img.setImageResource(data[position].img)
+            if(data[position].img == -1){
+                holder.img.setImageURI(data[position].uri)
+            }
+            else {
+                holder.img.setImageResource(data[position].img)
+            }
             holder.name.text = data[position].name
             setUserLike(data[position], holder.like)
             holder.like.setOnClickListener {
@@ -82,7 +87,12 @@ class ContactRecyclerAdapter(val data: MutableList<UserData>, val onItemClick: O
             }
         } else if (position % 2 == 1) {
             holder as RightViewHolder
-            holder.img.setImageResource(data[position].img)
+            if(data[position].img == -1){
+                holder.img.setImageURI(data[position].uri)
+            }
+            else {
+                holder.img.setImageResource(data[position].img)
+            }
             holder.name.text = data[position].name
             holder.like.setOnClickListener {
                 addUserLike(data[position], holder.like)

@@ -10,6 +10,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,12 +20,17 @@ import com.example.nbc_closer.databinding.FragmentSaveInfoBinding
 
 
 class SaveInfoDialogFragment :DialogFragment() {
-
+    var nameCheck = false
+    var numberCheck = false
+    var emailCheck = false
+    var imageCheck = false
     private  var _binding: FragmentSaveInfoBinding? = null
     private lateinit var addMemberResult: ActivityResultLauncher<Intent>
     private var uri: Uri? = null
+    private lateinit var name : EditText
+    private lateinit var email : EditText
+    private lateinit var number : EditText
     private val binding get() = _binding!!
-
 
 
     override fun onCreateView(
@@ -32,18 +38,50 @@ class SaveInfoDialogFragment :DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSaveInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentSaveInfoBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    //메소드 설정
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initView()
+
+    }
 
 
-        dialog?.setCancelable(false)
 
-        var nameCheck = false
-        var numberCheck = false
-        var emailCheck = false
-        var imageCheck = false
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 
-//        var savelist = ArrayList<UserData>() 추가할 데이터 리스트 파일
 
+    //초기 다이얼로그 설정
+    private fun initView() {
+        name = binding.dialogName
+        email = binding.dialogEmail
+        number = binding.dialogPhoneNumber
+        binding.dialogCancellation.setOnClickListener {
+            binding.dialogName.text.clear()
+            binding.dialogEmail.text.clear()
+            binding.dialogPhoneNumber.text.clear()
+            dismiss()
+        }
+        binding.dialogSave.setOnClickListener {
+            val name = binding.dialogName.text.toString()
+            val email = binding.dialogEmail.text.toString()
+            val phoneNumber = binding.dialogPhoneNumber.text.toString()
+            val data = UserData(-1, name, email, phoneNumber, false, uri)
+            datalist.add(data)
+            Toast.makeText(this.context, "연락처가 추가되었습니다.", Toast.LENGTH_SHORT).show()
+            binding.dialogName.text.clear()
+            binding.dialogEmail.text.clear()
+            binding.dialogPhoneNumber.text.clear()
+            addSavedButtonClicked = true
+            dismiss()
+        }
+        // 이미지 추가 기능
         binding.apply {
             dialogAdd.setOnClickListener {
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
@@ -59,19 +97,13 @@ class SaveInfoDialogFragment :DialogFragment() {
         ) {
             if (it.resultCode == Activity.RESULT_OK && it.data != null) {
                 uri = it.data!!.data
-
                 Glide.with(this)
                     .load(uri)
                     .into(binding.dialogProfile)
-
                 imageCheck = true
             }
         }
-
-        val name = binding.dialogName
-        val number = binding.dialogPhoneNumber
-        val email = binding.dialogEmail
-
+        //editText관련
         name.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence?,
@@ -80,7 +112,6 @@ class SaveInfoDialogFragment :DialogFragment() {
                 after: Int
             ) {
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val englishPattern = Regex("^[a-zA-Z]{5,}\$")
                 val koreanPattern = Regex("^[가-힣]{3,}\$")
@@ -96,8 +127,6 @@ class SaveInfoDialogFragment :DialogFragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
-
-
         number.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence?,
@@ -123,8 +152,6 @@ class SaveInfoDialogFragment :DialogFragment() {
 
             }
         })
-
-
         email.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(
                 s: CharSequence?,
@@ -133,7 +160,6 @@ class SaveInfoDialogFragment :DialogFragment() {
                 after: Int
             ) {
             }
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val emailPattern = Regex("^\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3}+)$")
 
@@ -145,40 +171,8 @@ class SaveInfoDialogFragment :DialogFragment() {
                     emailCheck = false
                 }
             }
-
             override fun afterTextChanged(s: Editable?) {
-
             }
-
         })
-        binding.dialogCancellation.setOnClickListener {
-            dismiss()
-        }
-
-        binding.dialogSave.setOnClickListener {
-            if(!imageCheck == null) {
-                Toast.makeText(context,"사진을 추가해주세요",Toast.LENGTH_SHORT).show()
-            }
-            else if(nameCheck && numberCheck && emailCheck && imageCheck) {
-                val inputName = name.text.toString()
-                val inputNumber = number.text.toString()
-                val inputEmail = email.text.toString()
-                val inputProfile = uri ?: return@setOnClickListener
-//                val save = 추가할 데이터 리스트 파일(inputName,inputNumber,inputEmail,inputProfile)
-//                savelist.add(save)
-
-                val bundle = Bundle()
-
-                dismiss()
-            } else {
-            Toast.makeText(context, "형식에 맞지 않은 정보가 존재합니다.", Toast.LENGTH_SHORT).show()
-            }
-        }
-        return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

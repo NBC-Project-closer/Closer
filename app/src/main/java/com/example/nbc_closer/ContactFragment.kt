@@ -1,7 +1,13 @@
 package com.example.nbc_closer
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Paint
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,23 +16,42 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.nbc_closer.databinding.ActivityDetailBinding
 import com.example.nbc_closer.databinding.FragmentContactBinding
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
+var isFloatingButtonClick : Boolean = false
+var addSavedButtonClicked : Boolean = false
 class ContactFragment : Fragment() {
     lateinit var binding : FragmentContactBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactBinding.inflate(layoutInflater)
+        //스와이프 기능
+        swipeToCall()
+        //스와이프 기능
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initFragment()
+        addData()
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -60,10 +85,28 @@ class ContactFragment : Fragment() {
             }
         })
         binding.contactRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.contactBtnAdd.setOnClickListener {
-            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
-            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        //플로팅 버튼 설정 관련 메소드
+        binding.contactFloatingBtn.setOnClickListener {
+            if(!isFloatingButtonClick){
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_x)
+                binding.contactFloatingAdd.visibility = View.VISIBLE
+                binding.contactFloatingAlarm.visibility = View.VISIBLE
+                binding.contactFloatingLoad.visibility = View.VISIBLE
+                isFloatingButtonClick = true
+            }
+            else {
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_plus)
+                binding.contactFloatingAdd.visibility = View.GONE
+                binding.contactFloatingAlarm.visibility = View.GONE
+                binding.contactFloatingLoad.visibility = View.GONE
+                isFloatingButtonClick = false
+            }
         }
+        binding.contactFloatingAdd.setOnClickListener {
+            Log.d("확인", "디이얼로그오픈")
+            openAddDialog()
+        }
+
     }
     private fun initGrid(){
         binding.contactRecyclerView.adapter = ContactGridAdapter(datalist,object :OnItemClick{
@@ -74,10 +117,100 @@ class ContactFragment : Fragment() {
             }
         })
         binding.contactRecyclerView.layoutManager = GridLayoutManager(this.context,2)
-        binding.contactBtnAdd.setOnClickListener {
-            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
-            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        //플로팅 버튼 설정 관련 메소드
+        binding.contactFloatingBtn.setOnClickListener {
+            if(!isFloatingButtonClick){
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_x)
+                binding.contactFloatingAdd.visibility = View.VISIBLE
+                binding.contactFloatingAlarm.visibility = View.VISIBLE
+                binding.contactFloatingLoad.visibility = View.VISIBLE
+                isFloatingButtonClick = true
+            }
+            else {
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_plus)
+                binding.contactFloatingAdd.visibility = View.GONE
+                binding.contactFloatingAlarm.visibility = View.GONE
+                binding.contactFloatingLoad.visibility = View.GONE
+                isFloatingButtonClick = false
+            }
+        }
+
+        binding.contactFloatingAdd.setOnClickListener {
+            Log.d("확인", "디이얼로그오픈")
+            openAddDialog()
+        }
+
+    }
+
+    //다이얼로그 오픈
+    private fun openAddDialog() {
+        val dialog = SaveInfoDialogFragment()
+        dialog.isCancelable = false
+        dialog.show(requireFragmentManager(), "openDialog")
+    }
+
+    //코루틴을 활용하여 datalist 변화를 계속 감지하는 메소드
+    @SuppressLint("NotifyDataSetChanged")
+    private fun addData() {
+        lifecycleScope.launch {
+            while(true){
+                delay(500)
+                if(addSavedButtonClicked){
+                    (binding.contactRecyclerView.adapter as ContactRecyclerAdapter).notifyDataSetChanged()
+                    addSavedButtonClicked = false
+                }
+            }
         }
     }
 
+    //ItemTouchHelper 구현 완료.
+    private fun swipeToCall(){
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false //드래그 사용 안함, 그치만 아예 빼면 오류남
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("tel:" + datalist[position].number) )
+                startActivity(callIntent)
+            }
+            //기존 뷰 다시 죽이고 init? 아니면 그냥 init 부르기?
+            //앱 다시 시작될 때???
+            //https://stackoverflow.com/questions/30820806/adding-a-colored-background-with-text-icon-under-swiped-row-when-using-androids
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+               if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                   val itemView = viewHolder.itemView
+                   val p = Paint()
+                   if (dX > 0) { //좌 -> 우 슬라이드
+                       //setColor에 바로 hex값을 넣으니 오류가 떠서 parseColor로 한 번 감싸줌.
+                       p.setColor(Color.parseColor("#242251"))
+                       c.drawRoundRect(itemView.left.toFloat(),
+                           itemView.top.toFloat(), dX, itemView.bottom.toFloat(), 20F, 20F,p)
+                   }
+                   super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+               }
+            }
+        })
+
+        itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
+    }
+
+    override fun onResume() { //프래그먼트 생명주기에서 재시작 타임에 initFragment를 다시금 해 줌. -> 전화 걸고 와도 안사라짐
+        super.onResume()
+        initFragment()
+    }
+    //ItemTouchHelper 여기까지
 }
