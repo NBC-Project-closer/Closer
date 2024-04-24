@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide
 import com.example.nbc_closer.databinding.FragmentSaveInfoBinding
 
 
-
 class SaveInfoDialogFragment :DialogFragment() {
 
     private  var _binding: FragmentSaveInfoBinding? = null
@@ -26,10 +25,6 @@ class SaveInfoDialogFragment :DialogFragment() {
     private var uri: Uri? = null
     private val binding get() = _binding!!
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        isCancelable = true //화면 밖 터치시 종료 막기
-    }
 
 
     override fun onCreateView(
@@ -39,6 +34,8 @@ class SaveInfoDialogFragment :DialogFragment() {
     ): View {
         _binding = FragmentSaveInfoBinding.inflate(inflater, container, false)
 
+
+        dialog?.setCancelable(false)
 
         var nameCheck = false
         var numberCheck = false
@@ -171,7 +168,6 @@ class SaveInfoDialogFragment :DialogFragment() {
 //                savelist.add(save)
 
                 val bundle = Bundle()
-
 
                 dismiss()
             } else {
