@@ -3,6 +3,7 @@ package com.example.nbc_closer
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Canvas
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
@@ -36,32 +37,9 @@ class ContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactBinding.inflate(layoutInflater)
-
-        //ItemTouchHelper 구현 중...
-        //ItemTouchHelper 구현 중...
-        //ItemTouchHelper 구현 중...
-        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false //드래그 사용 안함, 그치만 아예 빼면 오류남
-            }
-
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val position = viewHolder.adapterPosition
-                Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
-                val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("tel:" + "010-1234-5678") )
-                startActivity(callIntent)
-            }
-        })
-        itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
-        //ItemTouchHelper 구현 중...
-        //ItemTouchHelper 구현 중...
-        //ItemTouchHelper 구현 중...
-
-
+        //스와이프 기능
+        swipeToCall()
+        //스와이프 기능
         return binding.root
     }
 
@@ -178,4 +156,28 @@ class ContactFragment : Fragment() {
             }
         }
     }
+    //ItemTouchHelper 구현 중...
+    //ItemTouchHelper 구현 중...
+    //ItemTouchHelper 구현 중...
+    private fun swipeToCall(){
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false //드래그 사용 안함, 그치만 아예 빼면 오류남
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("tel:" + datalist[position].number) )
+                startActivity(callIntent)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
+    }
+    //ItemTouchHelper 구현 중...
+    //ItemTouchHelper 구현 중...
+    //ItemTouchHelper 구현 중...
 }
