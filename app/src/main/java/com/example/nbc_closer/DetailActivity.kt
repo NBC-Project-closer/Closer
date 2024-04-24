@@ -34,7 +34,12 @@ class DetailActivity : AppCompatActivity() {
     //초기 뷰 설정 관련 메소드
     private fun initView(){
         detailData = intent.getParcelableExtra<UserData>("detail")!!
-        binding.detailImg.setImageResource(detailData.img)
+        if(detailData.img == -1){
+            binding.detailImg.setImageURI(detailData.uri)
+        }
+        else {
+            binding.detailImg.setImageResource(detailData.img)
+        }
         binding.detailName.text = detailData.name
         binding.detailEmail.text = detailData.email
         binding.detailNumber.text = detailData.number
