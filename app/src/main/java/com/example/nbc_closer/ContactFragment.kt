@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -36,6 +38,8 @@ class ContactFragment : Fragment() {
         binding = FragmentContactBinding.inflate(layoutInflater)
 
         //ItemTouchHelper 구현 중...
+        //ItemTouchHelper 구현 중...
+        //ItemTouchHelper 구현 중...
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -47,11 +51,16 @@ class ContactFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val position = viewHolder.adapterPosition
-
+                Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()
+                val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("tel:" + "010-1234-5678") )
+                startActivity(callIntent)
             }
         })
         itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
         //ItemTouchHelper 구현 중...
+        //ItemTouchHelper 구현 중...
+        //ItemTouchHelper 구현 중...
+
 
         return binding.root
     }
