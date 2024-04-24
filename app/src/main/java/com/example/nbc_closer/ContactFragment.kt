@@ -17,7 +17,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.nbc_closer.databinding.FragmentContactBinding
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import kotlinx.coroutines.delay
@@ -32,6 +34,25 @@ class ContactFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentContactBinding.inflate(layoutInflater)
+
+        //ItemTouchHelper 구현 중...
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false //드래그 사용 안함, 그치만 아예 빼면 오류남
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
+        //ItemTouchHelper 구현 중...
+
         return binding.root
     }
 
