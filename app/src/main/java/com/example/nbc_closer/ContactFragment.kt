@@ -1,5 +1,7 @@
 package com.example.nbc_closer
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -12,11 +14,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nbc_closer.databinding.FragmentContactBinding
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 var isFloatingButtonClick : Boolean = false
+var addSavedButtonClicked : Boolean = false
 class ContactFragment : Fragment() {
     lateinit var binding : FragmentContactBinding
     override fun onCreateView(
@@ -29,6 +37,7 @@ class ContactFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initFragment()
+        addData()
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -79,6 +88,10 @@ class ContactFragment : Fragment() {
                 isFloatingButtonClick = false
             }
         }
+        binding.contactFloatingAdd.setOnClickListener {
+            Log.d("확인", "디이얼로그오픈")
+            openAddDialog()
+        }
 
     }
     private fun initGrid(){
@@ -108,6 +121,31 @@ class ContactFragment : Fragment() {
             }
         }
 
+        binding.contactFloatingAdd.setOnClickListener {
+            Log.d("확인", "디이얼로그오픈")
+            openAddDialog()
+        }
+
     }
 
+    //다이얼로그 오픈
+    private fun openAddDialog() {
+        val dialog = SaveInfoDialogFragment()
+        dialog.isCancelable = false
+        dialog.show(requireFragmentManager(), "openDialog")
+    }
+
+    //코루틴을 활용하여 datalist 변화를 계속 감지하는 메소드
+    @SuppressLint("NotifyDataSetChanged")
+    private fun addData() {
+        lifecycleScope.launch {
+            while(true){
+                delay(500)
+                if(addSavedButtonClicked){
+                    (binding.contactRecyclerView.adapter as ContactRecyclerAdapter).notifyDataSetChanged()
+                    addSavedButtonClicked = false
+                }
+            }
+        }
+    }
 }

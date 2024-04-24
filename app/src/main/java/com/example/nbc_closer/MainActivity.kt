@@ -14,20 +14,10 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        enableEdgeToEdge()
         initView()
         setContentView(binding.root)
-
-        SaveInfoDialogFragment().show(
-            supportFragmentManager, "SaveInfoDialogFragment")
-
         //앱 바 액티비티에 묶기
         setSupportActionBar(binding.mainToolBar)
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
 
     }
 
