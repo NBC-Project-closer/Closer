@@ -10,11 +10,13 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nbc_closer.databinding.FragmentContactBinding
 
+var isFloatingButtonClick : Boolean = false
 class ContactFragment : Fragment() {
     lateinit var binding : FragmentContactBinding
     override fun onCreateView(
@@ -60,10 +62,24 @@ class ContactFragment : Fragment() {
             }
         })
         binding.contactRecyclerView.layoutManager = LinearLayoutManager(this.context)
-        binding.contactBtnAdd.setOnClickListener {
-            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
-            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        //플로팅 버튼 설정 관련 메소드
+        binding.contactFloatingBtn.setOnClickListener {
+            if(!isFloatingButtonClick){
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_x)
+                binding.contactFloatingAdd.visibility = View.VISIBLE
+                binding.contactFloatingAlarm.visibility = View.VISIBLE
+                binding.contactFloatingLoad.visibility = View.VISIBLE
+                isFloatingButtonClick = true
+            }
+            else {
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_plus)
+                binding.contactFloatingAdd.visibility = View.GONE
+                binding.contactFloatingAlarm.visibility = View.GONE
+                binding.contactFloatingLoad.visibility = View.GONE
+                isFloatingButtonClick = false
+            }
         }
+
     }
     private fun initGrid(){
         binding.contactRecyclerView.adapter = ContactGridAdapter(datalist,object :OnItemClick{
@@ -74,10 +90,24 @@ class ContactFragment : Fragment() {
             }
         })
         binding.contactRecyclerView.layoutManager = GridLayoutManager(this.context,2)
-        binding.contactBtnAdd.setOnClickListener {
-            binding.contactBtnAdd.setBackgroundResource(R.color.btn_color)
-            binding.contactTvBtnAdd.setTextColor(Color.parseColor("#FFFFFF"))
+        //플로팅 버튼 설정 관련 메소드
+        binding.contactFloatingBtn.setOnClickListener {
+            if(!isFloatingButtonClick){
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_x)
+                binding.contactFloatingAdd.visibility = View.VISIBLE
+                binding.contactFloatingAlarm.visibility = View.VISIBLE
+                binding.contactFloatingLoad.visibility = View.VISIBLE
+                isFloatingButtonClick = true
+            }
+            else {
+                binding.contactFloatingBtn.setImageResource(R.drawable.icon_plus)
+                binding.contactFloatingAdd.visibility = View.GONE
+                binding.contactFloatingAlarm.visibility = View.GONE
+                binding.contactFloatingLoad.visibility = View.GONE
+                isFloatingButtonClick = false
+            }
         }
+
     }
 
 }
