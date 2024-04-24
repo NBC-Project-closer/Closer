@@ -1,9 +1,7 @@
 package com.example.nbc_closer
 
 import android.annotation.SuppressLint
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,14 +10,12 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nbc_closer.databinding.FragmentContactBinding
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+import com.example.nbc_closer.notification.NotificationDialog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -92,6 +88,10 @@ class ContactFragment : Fragment() {
             Log.d("확인", "디이얼로그오픈")
             openAddDialog()
         }
+        binding.contactFloatingAlarm.setOnClickListener{
+            Log.d("확인", "알람오픈")
+            openAlarmDialog()
+        }
 
     }
     private fun initGrid(){
@@ -125,6 +125,10 @@ class ContactFragment : Fragment() {
             Log.d("확인", "디이얼로그오픈")
             openAddDialog()
         }
+        binding.contactFloatingAlarm.setOnClickListener{
+            Log.d("확인", "알람오픈")
+            openAlarmDialog()
+        }
 
     }
 
@@ -133,6 +137,11 @@ class ContactFragment : Fragment() {
         val dialog = SaveInfoDialogFragment()
         dialog.isCancelable = false
         dialog.show(requireFragmentManager(), "openDialog")
+    }
+    private fun openAlarmDialog(){
+        val dialog = NotificationDialog()
+        dialog.isCancelable = false
+        dialog.show(requireFragmentManager(), "openAlarmDialog")
     }
 
     //코루틴을 활용하여 datalist 변화를 계속 감지하는 메소드
