@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.nbc_closer.databinding.FragmentMypageBinding
 
-class MyPageFragment: Fragment() {
-    private val binding by lazy { FragmentMypageBinding.inflate(layoutInflater) }
-
+class TopBarFragment: Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return binding.root
+        return inflater.inflate(R.layout.fragment_top_bar, container, false )
     }
 }
