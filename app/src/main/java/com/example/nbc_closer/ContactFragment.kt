@@ -29,7 +29,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.nbc_closer.databinding.ActivityDetailBinding
 import com.example.nbc_closer.databinding.FragmentContactBinding
-import com.example.nbc_closer.databinding.ItemSwipeBinding
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
