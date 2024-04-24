@@ -3,8 +3,10 @@ package com.example.nbc_closer
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.Paint
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +17,8 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources.getDrawable
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -23,7 +27,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nbc_closer.databinding.ActivityDetailBinding
 import com.example.nbc_closer.databinding.FragmentContactBinding
+import com.example.nbc_closer.databinding.ItemSwipeBinding
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -174,7 +180,32 @@ class ContactFragment : Fragment() {
                 val callIntent = Intent( Intent.ACTION_DIAL, Uri.parse("tel:" + datalist[position].number) )
                 startActivity(callIntent)
             }
+            //기존 뷰 다시 죽이고 init? 아니면 그냥 init 부르기?
+            //앱 다시 시작될 때???
+            //https://stackoverflow.com/questions/30820806/adding-a-colored-background-with-text-icon-under-swiped-row-when-using-androids
+            override fun onChildDraw(
+                c: Canvas,
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                dX: Float,
+                dY: Float,
+                actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+               if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                   val itemView = viewHolder.itemView
+                   val p = Paint()
+                   if (dX > 0) { //좌 -> 우 슬라이드
+                       //setColor에 바로 hex값을 넣으니 오류가 떠서 parseColor로 한 번 감싸줌.
+                       p.setColor(Color.parseColor("#242251"))
+                       c.drawRoundRect(itemView.left.toFloat(),
+                           itemView.top.toFloat(), dX, itemView.bottom.toFloat(), 20F, 20F,p)
+                   }
+                   super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+               }
+            }
         })
+
         itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
     }
     //ItemTouchHelper 구현 중...
