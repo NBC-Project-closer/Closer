@@ -1,6 +1,9 @@
 package com.example.nbc_closer
 
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -8,19 +11,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
 import com.example.nbc_closer.databinding.FragmentSaveInfoBinding
 
 
-@Suppress("UNREACHABLE_CODE")
+
 class SaveInfoDialogFragment :DialogFragment() {
 
     private  var _binding: FragmentSaveInfoBinding? = null
+    private lateinit var addMemberResult: ActivityResultLauncher<Intent>
+    private var uri: Uri? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isCancelable = true
+        isCancelable = true //화면 밖 터치시 종료 막기
     }
 
 
@@ -37,7 +45,31 @@ class SaveInfoDialogFragment :DialogFragment() {
         var emailCheck = false
         var imageCheck = false
 
-        var savelist = ArrayList<UserData>()
+//        var savelist = ArrayList<UserData>() 추가할 데이터 리스트 파일
+
+        binding.apply {
+            dialogAdd.setOnClickListener {
+                val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+                intent.addCategory(Intent.CATEGORY_OPENABLE)
+                intent.type = "image/*"
+                addMemberResult.launch(intent)
+            }
+        }
+
+        addMemberResult = registerForActivityResult(
+            ActivityResultContracts
+                .StartActivityForResult()
+        ) {
+            if (it.resultCode == Activity.RESULT_OK && it.data != null) {
+                uri = it.data!!.data
+
+                Glide.with(this)
+                    .load(uri)
+                    .into(binding.dialogProfile)
+
+                imageCheck = true
+            }
+        }
 
         val name = binding.dialogName
         val number = binding.dialogPhoneNumber
@@ -127,10 +159,19 @@ class SaveInfoDialogFragment :DialogFragment() {
         }
 
         binding.dialogSave.setOnClickListener {
-            if(nameCheck && numberCheck && emailCheck && imageCheck) {
+            if(!imageCheck == null) {
+                Toast.makeText(context,"사진을 추가해주세요",Toast.LENGTH_SHORT).show()
+            }
+            else if(nameCheck && numberCheck && emailCheck && imageCheck) {
                 val inputName = name.text.toString()
                 val inputNumber = number.text.toString()
                 val inputEmail = email.text.toString()
+                val inputProfile = uri ?: return@setOnClickListener
+//                val save = 추가할 데이터 리스트 파일(inputName,inputNumber,inputEmail,inputProfile)
+//                savelist.add(save)
+
+                val bundle = Bundle()
+
 
                 dismiss()
             } else {
