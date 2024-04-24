@@ -37,6 +37,7 @@ var isFloatingButtonClick : Boolean = false
 var addSavedButtonClicked : Boolean = false
 class ContactFragment : Fragment() {
     lateinit var binding : FragmentContactBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -161,9 +162,8 @@ class ContactFragment : Fragment() {
             }
         }
     }
-    //ItemTouchHelper 구현 중...
-    //ItemTouchHelper 구현 중...
-    //ItemTouchHelper 구현 중...
+
+    //ItemTouchHelper 구현 완료.
     private fun swipeToCall(){
         val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
             override fun onMove(
@@ -207,7 +207,10 @@ class ContactFragment : Fragment() {
 
         itemTouchHelper.attachToRecyclerView(binding.contactRecyclerView)
     }
-    //ItemTouchHelper 구현 중...
-    //ItemTouchHelper 구현 중...
-    //ItemTouchHelper 구현 중...
+
+    override fun onResume() { //프래그먼트 생명주기에서 재시작 타임에 initFragment를 다시금 해 줌. -> 전화 걸고 와도 안사라짐
+        super.onResume()
+        initFragment()
+    }
+    //ItemTouchHelper 여기까지
 }
