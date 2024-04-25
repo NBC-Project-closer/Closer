@@ -9,8 +9,15 @@ import com.example.nbc_closer.databinding.ItemContactGridBinding
 class ContactGridAdapter(val data:MutableList<UserData>,val onItemClick: OnItemClick):RecyclerView.Adapter<ContactGridAdapter.GridAdapter>() {
     inner class GridAdapter(private val binding:ItemContactGridBinding):RecyclerView.ViewHolder(binding.root){
         fun bind(userData:UserData){
-            binding.gridUserImg.setImageResource(userData.img)
+            if(userData.img == -1){
+                binding.gridUserImg.setImageURI(userData.uri)
+            }
+            else {
+                binding.gridUserImg.setImageResource(userData.img)
+            }
             binding.gridUserName.text = userData.name
+            // 만약 프래그먼트 갱신 시 한번 더 확인 목적
+            setUserLike(userData, binding.gridLike)
             binding.gridLike.setOnClickListener{
                 if(!userData.like){
                     binding.gridLike.setImageResource(R.drawable.icon_fillstar)

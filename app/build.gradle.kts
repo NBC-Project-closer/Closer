@@ -50,7 +50,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.circleimageview)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -59,6 +58,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     implementation("de.hdodenhof:circleimageview:3.1.0")
+    implementation("com.github.bumptech.glide:glide:4.14.2")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
