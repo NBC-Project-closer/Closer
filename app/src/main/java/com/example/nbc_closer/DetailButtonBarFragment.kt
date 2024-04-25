@@ -11,7 +11,13 @@ import androidx.fragment.app.Fragment
 import com.example.nbc_closer.databinding.FragmentDetailButtonBarBinding
 
 class DetailButtonBarFragment: Fragment() {
-    private var detailPhoneNumber = "010-9874-3216" // 나중에 가지고 와야.
+
+    //DetailActivity에서 여기로 번호를 가져와야 함.
+    //Activity에서 번들 사용해서 가져오면 됨! <<< index 찝기
+
+    //번들 받기 시작
+    private var detailPhoneNumber = arguments?.getString("number")
+    //번들 받기 끝
     private val binding by lazy {FragmentDetailButtonBarBinding.inflate(layoutInflater)}
 
     override fun onCreateView(

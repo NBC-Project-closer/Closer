@@ -1,7 +1,6 @@
 package com.example.nbc_closer
 
 import android.app.Activity
-import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -12,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
@@ -43,17 +41,6 @@ class LoadInfoDialogFragment : DialogFragment() {
         _binding = null
     }
 
-//    private fun checkPermissionAgain() {
-//        val permission =
-//            ContextCompat.checkSelfPermission(requireContext(), "android.permission.READ_CONTACTS")
-//
-//        if (permission != PackageManager.PERMISSION_GRANTED) {
-//            dismiss() //Me : 토스트 메시지 띄우고 싶다
-//        } else {
-//            initView()
-//        }
-//    }
-
     private fun checkPermission() {
         val permission = ContextCompat.checkSelfPermission(requireContext(), "android.permission.READ_CONTACTS")
         if (permission != PackageManager.PERMISSION_GRANTED) {
@@ -67,51 +54,12 @@ class LoadInfoDialogFragment : DialogFragment() {
         }
     }
 
-//    private fun seekPermission() {
-//        val builder = AlertDialog.Builder(requireContext())
-//
-//        builder.setTitle("연락처 접근 허용")
-//        builder.setMessage("핸드폰 연락처에서도 사람을 추가할 수 있습니다. 연락처 접근을 허용하시겠습니까?")
-//        builder.setIcon(R.drawable.icon_load)
-//
-//        val listener = object : DialogInterface.OnClickListener {
-//            override fun onClick(p0: DialogInterface?, p1: Int) {
-//                when (p1) {
-//                    DialogInterface.BUTTON_POSITIVE -> getPermission()
-//                    DialogInterface.BUTTON_NEGATIVE -> return
-//                }
-//            }
-//        }
-//
-//        builder.setPositiveButton("허용", listener)
-//        builder.setNegativeButton("거부", listener)
-//
-//        builder.show()
-//    }
-
     private fun getPermission() {
         ActivityCompat.requestPermissions(requireActivity(),
             arrayOf<String>("android.permission.READ_CONTACTS"),
             0
         )
     }
-
-//    override fun onRequestPermissionsResult(
-//        requestCode: Int,
-//        permissions: Array<out String>,
-//        grantResults: IntArray
-//    ) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-//        when (requestCode) {
-//            requestCode -> {
-//                if (grantResults.size > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                    initView()
-//                } else {
-//                    dismiss()
-//                }
-//            }
-//        }
-//    }
 
     private fun initView() {
 

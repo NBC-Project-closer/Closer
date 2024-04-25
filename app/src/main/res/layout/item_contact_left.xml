@@ -11,7 +11,7 @@
     android:id="@+id/contact_left_constraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
+    android:padding="20dp"
     >
     <androidx.cardview.widget.CardView
         android:id="@+id/contact_left_cardview"
@@ -44,8 +44,8 @@
 
     <ImageView
         android:id="@+id/contact_left_like"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:src="@drawable/icon_star"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

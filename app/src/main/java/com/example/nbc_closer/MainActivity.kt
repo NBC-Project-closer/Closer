@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 else -> tab.text = "마이페이지"
             }
         }.attach()
-        binding.contractTab.setTabTextColors(Color.rgb(80,80,80), R.color.font_color)
+        binding.contractTab.setTabTextColors(Color.rgb(80,80,80), Color.rgb(255,255,255))
         binding.mainToolBar.title = ""
         }
 
