@@ -23,7 +23,7 @@ class SaveInfoDialogFragment :DialogFragment() {
     var nameCheck = false
     var numberCheck = false
     var emailCheck = false
-    var imageCheck = false
+    private var imageCheck = false
     private  var _binding: FragmentSaveInfoBinding? = null
     private lateinit var addMemberResult: ActivityResultLauncher<Intent>
     private var uri: Uri? = null
@@ -48,8 +48,6 @@ class SaveInfoDialogFragment :DialogFragment() {
         initView()
 
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
@@ -83,7 +81,7 @@ class SaveInfoDialogFragment :DialogFragment() {
         }
         // 이미지 추가 기능
         binding.apply {
-            dialogAdd.setOnClickListener {
+            dialogProfile.setOnClickListener {
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
                 intent.addCategory(Intent.CATEGORY_OPENABLE)
                 intent.type = "image/*"
