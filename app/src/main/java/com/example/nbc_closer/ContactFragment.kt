@@ -107,6 +107,12 @@ class ContactFragment : Fragment() {
                 isFloatingButtonClick = false
             }
         }
+
+        binding.contactFloatingLoad.setOnClickListener {
+            Log.d("확인", "로드오픈")
+            openLoadDialog()
+        }
+        
         binding.contactFloatingAdd.setOnClickListener {
             Log.d("확인", "디이얼로그오픈")
             openAddDialog()
@@ -144,6 +150,11 @@ class ContactFragment : Fragment() {
             }
         }
 
+        binding.contactFloatingLoad.setOnClickListener {
+            Log.d("확인", "로드오픈")
+            openLoadDialog()
+        }
+
         binding.contactFloatingAdd.setOnClickListener {
             Log.d("확인", "디이얼로그오픈")
             openAddDialog()
@@ -165,6 +176,12 @@ class ContactFragment : Fragment() {
         val dialog = NotificationDialog()
         dialog.isCancelable = false
         dialog.show(requireFragmentManager(), "openAlarmDialog")
+    }
+
+    private fun openLoadDialog() {
+        val dialog = LoadInfoDialogFragment()
+        dialog.isCancelable = false
+        dialog.show(requireFragmentManager(), "openLoadDialog")
     }
 
     //코루틴을 활용하여 datalist 변화를 계속 감지하는 메소드
