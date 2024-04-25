@@ -23,7 +23,7 @@ class SaveInfoDialogFragment :DialogFragment() {
     var nameCheck = false
     var numberCheck = false
     var emailCheck = false
-    var imageCheck = false
+    private var imageCheck = false
     private  var _binding: FragmentSaveInfoBinding? = null
     private lateinit var addMemberResult: ActivityResultLauncher<Intent>
     private var uri: Uri? = null

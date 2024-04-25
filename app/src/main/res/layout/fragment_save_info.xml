@@ -37,10 +37,12 @@
             android:layout_marginEnd="50dp"
             android:hint="@string/dialog_name"
             android:inputType="text"
+            android:autofillHints="name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialog_profile" />
+            app:layout_constraintTop_toBottomOf="@+id/dialog_profile"
+             />
 
         <EditText
             android:id="@+id/dialog_phone_number"
@@ -49,8 +51,9 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="50dp"
+            android:autofillHints="phone_number"
             android:hint="@string/dialog_phone_number"
-            android:inputType="text"
+            android:inputType="phone|number"
             app:layout_constraintEnd_toEndOf="@id/dialog_name"
             app:layout_constraintStart_toStartOf="@id/dialog_name"
             app:layout_constraintTop_toTopOf="@id/dialog_name" />
@@ -63,10 +66,12 @@
             android:layout_marginTop="50dp"
             android:layout_marginEnd="50dp"
             android:hint="@string/dialog_email"
-            android:inputType="text"
+            android:autofillHints="email"
+            android:inputType="textEmailAddress"
             app:layout_constraintEnd_toEndOf="@id/dialog_phone_number"
             app:layout_constraintStart_toStartOf="@id/dialog_phone_number"
-            app:layout_constraintTop_toTopOf="@id/dialog_phone_number" />
+            app:layout_constraintTop_toTopOf="@id/dialog_phone_number"
+             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/dialog_save"
@@ -102,10 +107,12 @@
             android:id="@+id/dialog_add"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:src="@drawable/add"
             android:background="@color/black"
+            android:src="@drawable/add"
+            android:contentDescription="@string/image_add"
             app:layout_constraintBottom_toBottomOf="@+id/dialog_profile"
-            app:layout_constraintStart_toEndOf="@+id/dialog_profile" />
+            app:layout_constraintStart_toEndOf="@+id/dialog_profile"
+            tools:ignore="TouchTargetSizeCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
