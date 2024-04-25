@@ -49,8 +49,6 @@ class SaveInfoDialogFragment :DialogFragment() {
 
     }
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -83,7 +81,7 @@ class SaveInfoDialogFragment :DialogFragment() {
         }
         // 이미지 추가 기능
         binding.apply {
-            dialogAdd.setOnClickListener {
+            dialogProfile.setOnClickListener {
                 val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
                 intent.addCategory(Intent.CATEGORY_OPENABLE)
                 intent.type = "image/*"
