@@ -34,12 +34,12 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/contract_tab"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:tabGravity="fill"
         app:tabTextAppearance="@style/tabTextSizeBold"
-        app:tabIndicatorColor="@color/font_color"
         app:tabMode="fixed"
+        app:tabBackground="@color/font_color"
         />
 
     <!--디테일 프래그먼트로 가는 부분 작성 필요(현재는 실행 시 확인 불가)-->

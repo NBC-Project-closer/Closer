@@ -7,6 +7,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +16,12 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.whenStarted
 import com.bumptech.glide.Glide
 import com.example.nbc_closer.databinding.FragmentSaveInfoBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class SaveInfoDialogFragment :DialogFragment() {
@@ -46,7 +51,6 @@ class SaveInfoDialogFragment :DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
-
     }
 
     override fun onDestroyView() {
@@ -60,6 +64,8 @@ class SaveInfoDialogFragment :DialogFragment() {
         name = binding.dialogName
         email = binding.dialogEmail
         number = binding.dialogPhoneNumber
+        binding.dialogSave.isEnabled = false
+        binding.dialogSave.setBackgroundResource(R.drawable.dialog_button_deactivate)
         binding.dialogCancellation.setOnClickListener {
             binding.dialogName.text.clear()
             binding.dialogEmail.text.clear()
@@ -172,5 +178,29 @@ class SaveInfoDialogFragment :DialogFragment() {
             override fun afterTextChanged(s: Editable?) {
             }
         })
+        //버튼 활성화 관련 코루틴 이용
+        lifecycleScope.launch {
+            whenStarted {
+                while (true){
+                    availableSavedButton()
+                }
+            }
+        }
+    }
+    //버튼 활성화 관련, suspend 함수 활용
+    private suspend fun availableSavedButton() {
+        delay(500)
+        Log.d("d", "함수 작동 중")
+        Log.d("확인", "$imageCheck, $nameCheck, $emailCheck, $numberCheck")
+        if(imageCheck && nameCheck && emailCheck && numberCheck){
+            binding.dialogSave.isEnabled = true
+            Log.d("firm", "버튼 활성화")
+            binding.dialogSave.setBackgroundResource(R.drawable.dialog_button)
+        }
+        else {
+            binding.dialogSave.isEnabled = false
+            Log.d("firm", "버튼 비활성화")
+            binding.dialogSave.setBackgroundResource(R.drawable.dialog_button_deactivate)
+        }
     }
 }

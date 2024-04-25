@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.NBC_Closer" parent="Base.Theme.NBC_Closer" />
+    <style name="Theme.NBC_Closer" parent="Base.Theme.NBC_Closer" >
+            <item name="android:textColorSecondary">@color/white</item>
+    </style>
 </resources>

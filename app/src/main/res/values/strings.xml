@@ -2,7 +2,7 @@
     <string name="app_name">NBC_Closer</string>
     <string name="dialog_event">이벤트</string>
     <string name="dialog_email">이메일</string>
-    <string name="dialog_phone_number">전호번호</string>
+    <string name="dialog_phone_number">전화번호</string>
     <string name="dialog_name">이름</string>
     <string name="dialog_cancellation">작성 취소</string>
     <string name="dialog_save">저장하기</string>
