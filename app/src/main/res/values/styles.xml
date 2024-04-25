@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <style name="tabTextSizeBold" parent="TextAppearance.Design.Tab">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textStyle">bold</item>
 
 <!--        <item name="toolbarNavigationButtonStyle">@style/AppTheme.Actionbar</item>-->
@@ -17,4 +17,5 @@
 <!--    <style name="AppTheme.OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">-->
 <!--        <item name="android:tint">#fff</item>-->
 <!--    </style>-->
+
 </resources>
