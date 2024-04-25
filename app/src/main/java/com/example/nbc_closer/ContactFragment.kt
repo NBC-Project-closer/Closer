@@ -35,6 +35,9 @@ import kotlinx.coroutines.launch
 
 var isFloatingButtonClick : Boolean = false
 var addSavedButtonClicked : Boolean = false
+const val GRID = 1
+const val LIST = 0
+var recyclerViewType : Int = 0
 class ContactFragment : Fragment() {
     lateinit var binding : FragmentContactBinding
 
@@ -44,7 +47,7 @@ class ContactFragment : Fragment() {
     ): View {
         binding = FragmentContactBinding.inflate(layoutInflater)
         //스와이프 기능
-        swipeToCall()
+//        swipeToCall()
         //스와이프 기능
         return binding.root
     }
@@ -52,6 +55,7 @@ class ContactFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         initFragment()
         addData()
+        swipeToCall()
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
     }
@@ -67,10 +71,13 @@ class ContactFragment : Fragment() {
             when(item.itemId){
                 R.id.show_grid -> {
                     Log.d("D", "그리드 형식 클릭")
-                   initGrid()
+                    initGrid()
+                    recyclerViewType = GRID
                    }
-                else -> {Log.d("D", "리스트 형식 클릭")
+                else -> {
+                    Log.d("D", "리스트 형식 클릭")
                     initFragment()
+                    recyclerViewType = LIST
                         }
         }
         return super.onOptionsItemSelected(item)
@@ -210,7 +217,10 @@ class ContactFragment : Fragment() {
 
     override fun onResume() { //프래그먼트 생명주기에서 재시작 타임에 initFragment를 다시금 해 줌. -> 전화 걸고 와도 안사라짐
         super.onResume()
-        initFragment()
+        if(recyclerViewType == LIST)
+            initFragment()
+        else
+            initGrid()
     }
     //ItemTouchHelper 여기까지
 }
