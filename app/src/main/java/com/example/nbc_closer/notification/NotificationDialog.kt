@@ -11,14 +11,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.nbc_closer.MainActivity
 import com.example.nbc_closer.databinding.DialogNotificationBinding
 import com.example.nbc_closer.notification.Constant.Companion.NOTIFICATION_ID
+import com.example.nbc_closer.notification.Constant.Companion.notiTitle
 
 class NotificationDialog :DialogFragment(){
     private var _binding:DialogNotificationBinding? = null
     private val binding get() = _binding!!
     private var alarm = 0
-    private var title = ""
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +28,6 @@ class NotificationDialog :DialogFragment(){
     ): View? {
         _binding = DialogNotificationBinding.inflate(layoutInflater)
         val view = binding.root
-
         return view
     }
 
@@ -46,8 +46,10 @@ class NotificationDialog :DialogFragment(){
             dismiss()
         }
         binding.notiSaveBtn.setOnClickListener {
-            title = binding.notiMessageEt.text.toString()
+            var title = binding.notiMessageEt.text.toString()
+            notiTitle = title
             intent.putExtra("title", title)
+            Log.d("sendtitle", "${title}")
             val triggerTime = (SystemClock.elapsedRealtime() + alarm)
             alarmManager.set(
                 AlarmManager.ELAPSED_REALTIME_WAKEUP,
