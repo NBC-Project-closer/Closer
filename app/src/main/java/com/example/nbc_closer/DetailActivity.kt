@@ -14,6 +14,7 @@ class DetailActivity : AppCompatActivity() {
     //현재 데이터를 보내고 있어서 해당 데이터는 주석처리 하였습니다.
     //[To-do] MainActivity에서 받은 '클릭된 UserData' 정보를 받아와야 한다. 임시로 값을 clickedUserData에 하드코딩해 주었다.
 //    private val clickedUserData = UserData(R.drawable.user_img_yujin, "안유진", "bluecar@naver.com","010-9874-3216",false)
+    //초기 뷰 설정 관련 메소드
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +30,10 @@ class DetailActivity : AppCompatActivity() {
             3. 받아온 값을 암시적 intent로 외부에 보내 문자/통화
         */
 
+
     }
 
-    //초기 뷰 설정 관련 메소드
+    //bundle로 수정
     private fun initView(){
         detailData = intent.getParcelableExtra<UserData>("detail")!!
         if(detailData.img == -1){
@@ -44,6 +46,13 @@ class DetailActivity : AppCompatActivity() {
         binding.detailEmail.text = detailData.email
         binding.detailNumber.text = detailData.number
         binding.detailToolBar.title = ""
+
+        //bundle 포장 시작
+        var detailFragment = DetailButtonBarFragment()
+        var numberBundle = Bundle()
+        numberBundle.putString("number", detailData.number)
+        detailFragment.arguments = numberBundle
+        //bundle 포장 끝
     }
     // 뒤로 가기 기능 설정, intent 사용하지 않고 액티비티 finish() 처리하였습니다.
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
