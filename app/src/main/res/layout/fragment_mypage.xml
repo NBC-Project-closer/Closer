@@ -27,7 +27,8 @@
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp">
+                android:layout_height="400dp"
+                android:layout_marginTop="20dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_margin="20dp"
@@ -64,7 +65,7 @@
                 android:textColor="#242251"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="40dp" />
 
             <TextView
                 android:id="@+id/mypage_phone"
@@ -72,11 +73,13 @@
                 android:layout_height="match_parent"
                 android:text="010-1234-5678"
                 android:textColor="#242251"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:textSize="20dp" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:background="#BBBBDC"
                 android:layout_marginTop="20dp" />
 
@@ -95,11 +98,13 @@
                 android:layout_height="match_parent"
                 android:text="katarinabluu@kwangya.net"
                 android:textColor="#242251"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp" />
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
                 android:layout_marginTop="20dp"
                 android:background="#BBBBDC" />
 
@@ -107,7 +112,7 @@
                 android:id="@+id/mypage_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이벤트"
+                android:text="상태메세지"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="#242251"
@@ -116,32 +121,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15분 이후 알림"
+                android:text="4/19 ~ 4/28 중간고사 기간\n연락 잘 안됩니다.\n문자 위주로 남겨주세요."
                 android:textSize="20dp"
-                android:textColor="#242251" />
+                android:textColor="#242251"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="70dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="3dp"
-                android:background="#BBBBDC"
-                android:layout_marginTop="20dp" />
-
-            <TextView
-                android:id="@+id/mypage_tv_more1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="추가 사항"
-                android:layout_marginTop="20dp"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/mypage_tv_more2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="있으면 넣을 것"
-                android:textSize="20dp"
-                android:layout_marginBottom="20dp"/>
 
         </LinearLayout>
 
