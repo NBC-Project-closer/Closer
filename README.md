@@ -28,19 +28,19 @@
 <br>
 
 ### 🔎구현 기능 
-상세정보(ContactDetailFragment)<a href =https://github.com/NBC-Project-closer/Closer/wiki/%EC%83%81%EC%84%B8%EC%A0%95%EB%B3%B4>상세보기 - WIKI 이동</a><br>
+상세정보(ContactDetailFragment) - <a href =https://github.com/NBC-Project-closer/Closer/wiki/%EC%83%81%EC%84%B8%EC%A0%95%EB%B3%B4>상세보기 - WIKI 이동</a><br>
 
 + 
 + 
 
-연락처(ContactFragment)<a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98">상세보기 - WIKI 이동</a><br>
+연락처(ContactFragment) - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98">상세보기 - WIKI 이동</a><br>
 
 + 
 
-마이 페이지(MyPageFragment)<a href ="https://github.com/NBC-Project-closer/Closer/wiki/%EB%A7%88%EC%9D%B4-%ED%8E%98%EC%9D%B4%EC%A7%80">상세보기 - WIKI 이동</a><br>
+마이 페이지(MyPageFragment) - <a href ="https://github.com/NBC-Project-closer/Closer/wiki/%EB%A7%88%EC%9D%B4-%ED%8E%98%EC%9D%B4%EC%A7%80">상세보기 - WIKI 이동</a><br>
 
 + 
-연락처 추가(Dialog)<a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%B6%94%EA%B0%80">상세보기 - WIKI 이동</a><br>
+연락처 추가(Dialog) - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%B6%94%EA%B0%80">상세보기 - WIKI 이동</a><br>
 
 + 유효성 검사
 + 갤러리 사진 불러오기
