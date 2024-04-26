@@ -45,6 +45,7 @@ class DetailActivity : AppCompatActivity() {
         binding.detailName.text = detailData.name
         binding.detailEmail.text = detailData.email
         binding.detailNumber.text = detailData.number
+        binding.detailStatusMessage.text = detailData.message
         binding.detailToolBar.title = ""
 
         //bundle 포장 시작

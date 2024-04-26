@@ -102,7 +102,7 @@ class LoadInfoDialogFragment : DialogFragment() {
             val email = binding.loadDialogEmail.text.toString()
             val phoneNumber = binding.loadDialogPhoneNumber.text.toString()
             val data =
-                UserData(R.drawable.user_img_jin, name, email, phoneNumber, false, uri = null)
+                UserData(R.drawable.user_img_jin, name, email, phoneNumber, false,"잘 부탁드립니다!", uri = null)
             datalist.add(data)
             binding.loadDialogName.text.clear()
             binding.loadDialogEmail.text.clear()
