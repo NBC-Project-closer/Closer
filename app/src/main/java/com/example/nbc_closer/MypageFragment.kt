@@ -62,7 +62,7 @@ class MyPageFragment: Fragment() {
             binding.mypageStatusMessage.visibility = View.VISIBLE
             binding.mypageEdit.visibility = View.VISIBLE
             binding.mypageNameBlock.visibility = View.VISIBLE
-            binding.mypageName.visibility - View.VISIBLE
+            binding.mypageName.visibility = View.VISIBLE
             binding.mypageLine1.visibility = View.VISIBLE
             binding.mypageLine2.visibility = View.VISIBLE
             binding.mypageEditPhone.visibility = View.GONE
@@ -74,6 +74,10 @@ class MyPageFragment: Fragment() {
             binding.mypagePhone.text = binding.mypageEditPhone.text
             binding.mypageEmail.text = binding.mypageEditEmail.text
             binding.mypageStatusMessage.text = binding.mypageEditStatusMessage.text
+            Log.d("d", "${binding.mypageName.text}")
+            nameCheck = false
+            phoneCheck = false
+            emailCheck = false
         }
         binding.mypageEditName.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
