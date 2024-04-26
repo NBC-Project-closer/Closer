@@ -183,6 +183,7 @@ class SaveInfoDialogFragment :DialogFragment() {
             whenStarted {
                 while (true){
                     availableSavedButton()
+                    imageInputCheck()
                 }
             }
         }
@@ -192,7 +193,7 @@ class SaveInfoDialogFragment :DialogFragment() {
         delay(500)
         Log.d("d", "함수 작동 중")
         Log.d("확인", "$imageCheck, $nameCheck, $emailCheck, $numberCheck")
-        if(imageCheck && nameCheck && emailCheck && numberCheck){
+        if(nameCheck && emailCheck && numberCheck){
             binding.dialogSave.isEnabled = true
             Log.d("firm", "버튼 활성화")
             binding.dialogSave.setBackgroundResource(R.drawable.dialog_button)
@@ -201,6 +202,17 @@ class SaveInfoDialogFragment :DialogFragment() {
             binding.dialogSave.isEnabled = false
             Log.d("firm", "버튼 비활성화")
             binding.dialogSave.setBackgroundResource(R.drawable.dialog_button_deactivate)
+        }
+    }
+    private suspend fun imageInputCheck() {
+        if(!imageCheck){
+            binding.dialogCaution.visibility = View.VISIBLE
+            binding.dialogCaution.setOnClickListener {
+                Toast.makeText(this.context, "이미지가 입력되지 않았습니다", Toast.LENGTH_SHORT ).show()
+            }
+        }
+        else {
+            binding.dialogCaution.visibility = View.GONE
         }
     }
 }
