@@ -1,14 +1,16 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.contact.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nbc_closer.R
+import com.example.nbc_closer.data.UserData
 import com.example.nbc_closer.databinding.ItemContactGridBinding
 
-class ContactGridAdapter(val data:MutableList<UserData>,val onItemClick: OnItemClick):RecyclerView.Adapter<ContactGridAdapter.GridAdapter>() {
+class ContactGridAdapter(val data:MutableList<UserData>, val onItemClick: OnItemClick):RecyclerView.Adapter<ContactGridAdapter.GridAdapter>() {
     inner class GridAdapter(private val binding:ItemContactGridBinding):RecyclerView.ViewHolder(binding.root){
-        fun bind(userData:UserData){
+        fun bind(userData: UserData){
             if(userData.img == -1){
                 binding.gridUserImg.setImageURI(userData.uri)
             }

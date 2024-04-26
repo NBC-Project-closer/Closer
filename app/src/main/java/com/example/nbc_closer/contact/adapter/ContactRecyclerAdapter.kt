@@ -1,4 +1,4 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.contact.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.example.nbc_closer.R
+import com.example.nbc_closer.data.UserData
 
 interface OnItemClick {
     fun onDataClick(data : UserData)

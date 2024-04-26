@@ -1,4 +1,4 @@
-package com.example.nbc_closer.notification
+package com.example.nbc_closer.contact.floating_action.notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -7,13 +7,12 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.nbc_closer.MainActivity
+import com.example.nbc_closer.contact.MainActivity
 import com.example.nbc_closer.R
-import com.example.nbc_closer.notification.Constant.Companion.CHANNEL_ID
-import com.example.nbc_closer.notification.Constant.Companion.NOTIFICATION_ID
-import com.example.nbc_closer.notification.Constant.Companion.notiTitle
+import com.example.nbc_closer.contact.floating_action.notification.Constant.Companion.CHANNEL_ID
+import com.example.nbc_closer.contact.floating_action.notification.Constant.Companion.NOTIFICATION_ID
+import com.example.nbc_closer.contact.floating_action.notification.Constant.Companion.notiTitle
 
 class MyReceiver : BroadcastReceiver() {
 

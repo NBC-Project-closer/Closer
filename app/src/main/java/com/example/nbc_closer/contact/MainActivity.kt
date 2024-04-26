@@ -1,4 +1,4 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.contact
 
 
 import android.annotation.SuppressLint
@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
+import com.example.nbc_closer.contact.adapter.ContactListViewAdapter
 import com.example.nbc_closer.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

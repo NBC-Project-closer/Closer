@@ -1,8 +1,7 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.contact
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -15,19 +14,23 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
-import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.toDrawable
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.nbc_closer.databinding.ActivityDetailBinding
+import com.example.nbc_closer.detail.DetailActivity
+import com.example.nbc_closer.contact.floating_action.LoadInfoDialogFragment
+import com.example.nbc_closer.R
+import com.example.nbc_closer.contact.adapter.ContactGridAdapter
+import com.example.nbc_closer.contact.adapter.ContactRecyclerAdapter
+import com.example.nbc_closer.contact.adapter.OnItemClick
+import com.example.nbc_closer.contact.floating_action.SaveInfoDialogFragment
+import com.example.nbc_closer.data.UserData
 import com.example.nbc_closer.databinding.FragmentContactBinding
-import com.example.nbc_closer.notification.NotificationDialog
+import com.example.nbc_closer.data.datalist
+import com.example.nbc_closer.contact.floating_action.notification.NotificationDialog
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -82,7 +85,7 @@ class ContactFragment : Fragment() {
     }
     //초기 설정을 함수로 내렸습니다, onViewCreated를 깔끔하게 하기 위해
     private fun initFragment() {
-        binding.contactRecyclerView.adapter = ContactRecyclerAdapter(datalist, object : OnItemClick{
+        binding.contactRecyclerView.adapter = ContactRecyclerAdapter(datalist, object : OnItemClick {
             override fun onDataClick(data: UserData) {
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra("detail", data)
@@ -124,7 +127,7 @@ class ContactFragment : Fragment() {
 
     }
     private fun initGrid(){
-        binding.contactRecyclerView.adapter = ContactGridAdapter(datalist,object :OnItemClick{
+        binding.contactRecyclerView.adapter = ContactGridAdapter(datalist,object : OnItemClick {
             override fun onDataClick(data: UserData) {
                 val intent = Intent(activity, DetailActivity::class.java)
                 intent.putExtra("detail", data)

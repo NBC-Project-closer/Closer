@@ -1,11 +1,11 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.detail
 
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
+import com.example.nbc_closer.R
+import com.example.nbc_closer.data.UserData
 import com.example.nbc_closer.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
