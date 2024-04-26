@@ -117,7 +117,7 @@ class LoadInfoDialogFragment : DialogFragment() {
             val name = binding.loadDialogName.text.toString()
             val email = binding.loadDialogEmail.text.toString()
             val phoneNumber = binding.loadDialogPhoneNumber.text.toString()
-            val data = UserData(-1, name, email, phoneNumber, false, "잘 부탁드립니다!", uri)
+            val data = UserData(R.drawable.user_img_jin, name, email, phoneNumber, false, "잘 부탁드립니다!", uri)
             datalist.add(data)
             Toast.makeText(this.context, "연락처가 추가되었습니다.", Toast.LENGTH_SHORT).show()
             binding.loadDialogName.text.clear()
