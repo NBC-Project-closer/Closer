@@ -76,7 +76,7 @@ class SaveInfoDialogFragment :DialogFragment() {
             val name = binding.dialogName.text.toString()
             val email = binding.dialogEmail.text.toString()
             val phoneNumber = binding.dialogPhoneNumber.text.toString()
-            val data = UserData(-1, name, email, phoneNumber, false, "",uri)
+            val data = UserData(-1, name, email, phoneNumber, false, "잘 부탁드립니다!",uri)
             datalist.add(data)
             Toast.makeText(this.context, "연락처가 추가되었습니다.", Toast.LENGTH_SHORT).show()
             binding.dialogName.text.clear()
