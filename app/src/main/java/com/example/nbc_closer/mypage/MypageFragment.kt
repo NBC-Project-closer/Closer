@@ -1,4 +1,4 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.mypage
 
 import android.os.Bundle
 import android.text.Editable

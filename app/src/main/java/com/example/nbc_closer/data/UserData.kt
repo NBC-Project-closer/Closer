@@ -1,7 +1,8 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.data
 
 import android.net.Uri
 import android.os.Parcelable
+import com.example.nbc_closer.R
 import kotlinx.parcelize.Parcelize
 
 
