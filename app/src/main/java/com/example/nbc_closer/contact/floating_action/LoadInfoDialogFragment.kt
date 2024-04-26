@@ -1,4 +1,4 @@
-package com.example.nbc_closer
+package com.example.nbc_closer.contact.floating_action
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,12 +18,13 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.whenStarted
-import com.bumptech.glide.Glide
+import com.example.nbc_closer.R
+import com.example.nbc_closer.contact.addSavedButtonClicked
+import com.example.nbc_closer.data.UserData
+import com.example.nbc_closer.data.datalist
 import com.example.nbc_closer.databinding.FragmentLoadInfoBinding
-import com.example.nbc_closer.databinding.FragmentSaveInfoBinding
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 

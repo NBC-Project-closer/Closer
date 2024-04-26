@@ -1,4 +1,4 @@
-package com.example.nbc_closer.notification
+package com.example.nbc_closer.contact.floating_action.notification
 
 import android.app.AlarmManager
 import android.app.PendingIntent
@@ -11,10 +11,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.nbc_closer.MainActivity
 import com.example.nbc_closer.databinding.DialogNotificationBinding
-import com.example.nbc_closer.notification.Constant.Companion.NOTIFICATION_ID
-import com.example.nbc_closer.notification.Constant.Companion.notiTitle
+import com.example.nbc_closer.contact.floating_action.notification.Constant.Companion.NOTIFICATION_ID
+import com.example.nbc_closer.contact.floating_action.notification.Constant.Companion.notiTitle
 
 class NotificationDialog :DialogFragment(){
     private var _binding:DialogNotificationBinding? = null

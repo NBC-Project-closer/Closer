@@ -1,4 +1,4 @@
-package com.example.nbc_closer.notification
+package com.example.nbc_closer.contact.floating_action.notification
 
 class Constant {
     companion object{
