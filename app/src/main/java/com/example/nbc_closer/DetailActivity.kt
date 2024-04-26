@@ -1,8 +1,11 @@
 package com.example.nbc_closer
 
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.example.nbc_closer.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
@@ -52,7 +55,15 @@ class DetailActivity : AppCompatActivity() {
         var detailFragment = DetailButtonBarFragment()
         var numberBundle = Bundle()
         numberBundle.putString("number", detailData.number)
+        Log.d("number", detailData.number)
         detailFragment.arguments = numberBundle
+
+        //프래그먼트 매니저 사용
+        val fragmentManager = supportFragmentManager.beginTransaction()
+        fragmentManager.replace(R.id.detail_btm_bar_frag, detailFragment)
+        fragmentManager.commit()
+        //프래그먼트 매니저 사용
+
         //bundle 포장 끝
     }
     // 뒤로 가기 기능 설정, intent 사용하지 않고 액티비티 finish() 처리하였습니다.
