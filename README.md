@@ -1,4 +1,4 @@
-# 미정
+  # 미정
  연락처 APP
  
 ## 🖥️프로젝트 소개
@@ -40,10 +40,12 @@
 + Swipe-to-Action
 + list type과 grid type으로 변경 사용
 + 앱바 main에 묶기
+  
 마이 페이지(MyPageFragment) - <a href ="https://github.com/NBC-Project-closer/Closer/wiki/%EB%A7%88%EC%9D%B4-%ED%8E%98%EC%9D%B4%EC%A7%80">상세보기 - WIKI 이동</a><br>
 
 + 유효성 검사
 + 정보 수정
++ 
 연락처 추가,불러오기(DialogSaveInfo,Load) - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%B6%94%EA%B0%80">상세보기 - WIKI 이동</a><br>
 
 + 유효성 검사
@@ -61,5 +63,6 @@
 1.IllegalArgumentException - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/IllegalArgumentException">상세보기 - WIKI 이동</a><br>
 2.The requested URL returned error 403 - <a href = "https://github.com/NBC-Project-closer/Closer/wikiThe-requested-URL-returned-error-403">상세보기 - WIKI 이동</a><br>
 3.xml 설정 관련 오류 - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/xml-setting-%EA%B4%80%EB%A0%A8-%EC%98%A4%EB%A5%98">상세보기 - WIKI 이동</a><br>
+
   
   
