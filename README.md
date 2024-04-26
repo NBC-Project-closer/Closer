@@ -45,7 +45,7 @@
 
 + 유효성 검사
 + 정보 수정
-+ 
+  
 연락처 추가,불러오기(DialogSaveInfo,Load) - <a href = "https://github.com/NBC-Project-closer/Closer/wiki/%EC%97%B0%EB%9D%BD%EC%B2%98-%EC%B6%94%EA%B0%80">상세보기 - WIKI 이동</a><br>
 
 + 유효성 검사
