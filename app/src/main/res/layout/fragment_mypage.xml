@@ -44,18 +44,43 @@
                         android:src="@drawable/dummy_img_karina"/>
                     
                 </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/mypage_name"
+                    <LinearLayout
+                    android:id="@+id/mypage_name_block"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_gravity="center|bottom"
+                    android:gravity="center"
+                    >
+                <TextView
+                    android:id="@+id/mypage_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="30dp"
                     android:gravity="center"
                     android:text="유지민"
                     android:textColor="#242251"
                     android:textSize="30dp"
                     android:textStyle="bold" />
-
+                     <ImageView
+                         android:id="@+id/mypage_edit"
+                         android:layout_width="25dp"
+                         android:layout_height="25dp"
+                         android:src="@drawable/icon_edit"
+                         android:layout_gravity="center"
+                         android:layout_marginStart="10dp"
+                         />
+                     </LinearLayout>
+                <EditText
+                    android:id='@+id/mypage_editName'
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:hint="이름"
+                    android:textSize="30dp"
+                    android:visibility="gone"
+                    />
             </FrameLayout>
 
             <TextView
@@ -76,8 +101,19 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:textSize="20dp" />
+            <EditText
+                android:id="@+id/mypage_edit_phone"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="전화번호"
+                android:textColor="#242251"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:visibility="gone"/>
 
             <View
+                android:id="@+id/mypage_line_1"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:background="#BBBBDC"
@@ -101,8 +137,19 @@
                 android:textSize="20dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp" />
+            <EditText
+                android:id="@+id/mypage_edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="이메일"
+                android:textColor="#242251"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:visibility="gone"/>
 
             <View
+                android:id="@+id/mypage_line_2"
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_marginTop="20dp"
@@ -119,6 +166,7 @@
                 android:layout_marginTop="20dp" />
 
             <TextView
+                android:id="@+id/mypage_status_message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="4/19 ~ 4/28 중간고사 기간\n연락 잘 안됩니다.\n문자 위주로 남겨주세요."
@@ -127,6 +175,31 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="70dp"/>
+            <EditText
+                android:id="@+id/mypage_edit_status_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textMultiLine"
+                android:hint="상태 메세지"
+                android:textSize="20dp"
+                android:lines="6"
+                android:gravity="top|left"
+                android:textColor="#242251"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginBottom="70dp"
+                android:visibility="gone"/>
+            <Button
+                android:id='@+id/mypage_btn_modify'
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/font_color"
+                android:text="저장하기"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:enabled="false"
+                />
 
 
         </LinearLayout>
