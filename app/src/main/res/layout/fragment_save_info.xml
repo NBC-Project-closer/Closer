@@ -30,6 +30,14 @@
             app:layout_constraintTop_toTopOf="parent"
             />
 
+        <ImageView
+            android:id="@+id/dialog_caution"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon_caution"
+            app:layout_constraintBottom_toTopOf="@+id/dialog_name"
+            app:layout_constraintStart_toEndOf="@+id/dialog_profile"
+            app:layout_constraintTop_toTopOf="parent" />
         <EditText
             android:id="@+id/dialog_name"
             android:layout_width="match_parent"

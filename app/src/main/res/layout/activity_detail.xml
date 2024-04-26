@@ -133,11 +133,10 @@
 
         </LinearLayout>
     </ScrollView><!-- [question] elevation과 상관없이(?) xml에서 아래로 갈수록 상단으로 가는 건가? 희한하네. -->
-    <fragment
+    <FrameLayout
         android:id="@+id/detail_btm_bar_frag"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:name="com.example.nbc_closer.DetailButtonBarFragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
