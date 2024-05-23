@@ -1,4 +1,4 @@
-  # Closest
+  # Closer
  연락처 APP
  
 ## 🖥️프로젝트 소개
